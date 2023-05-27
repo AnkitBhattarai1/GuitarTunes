@@ -126,9 +126,13 @@ class _playingWidgetState extends State<playingWidget> {
                 const Image(
                   image: AssetImage("assets/images/speakerimage.png"),
                 ),
+                SizedBox(
+                  height: 50,
+                ),
                 Text(
                   widget.chordlist[widget.listno][widget.chordPlayedcounter - 1]
                       .chordname,
+                  style: TextStyle(fontSize: 35),
                 ),
               ],
             ),

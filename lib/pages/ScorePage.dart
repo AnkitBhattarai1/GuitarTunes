@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 
-import 'package:guitar_tunes/pages/EarTrainer.dart';
-
 class ScorePage extends StatelessWidget {
   int score;
   ScorePage({super.key, required this.score});
@@ -25,7 +23,7 @@ class ScorePage extends StatelessWidget {
           ),
           Text(
             "$score",
-            style: TextStyle(fontSize: 35),
+            style: TextStyle(fontSize: 40),
           ),
         ],
       ),
