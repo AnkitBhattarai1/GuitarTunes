@@ -5,6 +5,7 @@ import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter_audio_capture/flutter_audio_capture.dart';
 import 'package:guitar_tunes/utils/calculateSmoothedGaugeValue.dart';
 import 'package:guitar_tunes/utils/getTuningStatus.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:pitch_detector_dart/pitch_detector.dart';
 import 'package:pitchupdart/instrument_type.dart';
 import 'package:pitchupdart/pitch_handler.dart';
@@ -46,6 +47,12 @@ class _GuitarTuningPageState extends State<GuitarTuningPage> {
   }
 
   Future<void> _startCapture() async {
+    PermissionStatus permissionStatus = await Permission.microphone.request();
+    if (permissionStatus != PermissionStatus.granted) {
+      await openAppSettings();
+      return;
+    }
+
     await _audioRecorder.start(listener, onError,
         sampleRate: 44100, bufferSize: 3000);
 
@@ -64,7 +71,7 @@ class _GuitarTuningPageState extends State<GuitarTuningPage> {
     });
   }
 
-  void listener(dynamic obj) {
+  void listener(dynamic obj) async {
     //Gets the audio sample
     var buffer = Float64List.fromList(obj.cast<double>());
     List<double> audioSample = buffer.toList();
