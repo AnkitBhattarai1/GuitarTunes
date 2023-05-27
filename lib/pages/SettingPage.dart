@@ -1,4 +1,5 @@
 import 'dart:ffi';
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
@@ -9,6 +10,9 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
+  bool _toggledvalue = false;
+  bool _toggledvalue2 = false;
+  bool _fingerColor = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,97 +53,83 @@ class _SettingsPageState extends State<SettingsPage> {
               ],
             ),
 
-            Container(
-              margin: const EdgeInsets.only(top: 5, bottom: 5),
-              padding: const EdgeInsetsDirectional.symmetric(
-                  vertical: 2, horizontal: 8),
-              height: 60,
-              alignment: Alignment.center,
-              width: 600,
-              decoration: BoxDecoration(
-                  border: Border.all(color: Colors.white),
-                  borderRadius: BorderRadius.circular(30)),
-              child: const Text(
-                "Language",
-                style: TextStyle(color: Colors.white60, fontSize: 25),
+            //Languages
+            scrollTile(
+              leading: const Text(
+                "Languages",
+                style: TextStyle(fontSize: 25, color: Colors.white),
+              ),
+              trailing: TextButton(
+                onPressed: () {},
+                child: TextButton(
+                  onPressed: () {},
+                  child: Text(
+                    "English",
+                    style: TextStyle(color: Colors.white54),
+                  ),
+                ),
               ),
             ),
+            //Node name Convection
+            scrollTile(
+                leading: const Text(
+                  "Note name Convection",
+                  style: TextStyle(fontSize: 25, color: Colors.white),
+                ),
+                trailing: TextButton(
+                  child: Text(
+                    "English",
+                    style: TextStyle(color: Colors.white54),
+                  ),
+                  onPressed: () {},
+                )),
 
-            Container(
-              margin: EdgeInsets.only(top: 5, bottom: 5),
-              padding:
-                  EdgeInsetsDirectional.symmetric(vertical: 2, horizontal: 8),
-              height: 60,
-              alignment: Alignment.center,
-              width: 600,
-              decoration: BoxDecoration(
-                  border: Border.all(color: Colors.white),
-                  borderRadius: BorderRadius.circular(30)),
-            ),
+            scrollTile(
+                leading: const Text(
+                  "Calibrate",
+                  style: TextStyle(fontSize: 25, color: Colors.white),
+                ),
+                trailing: TextButton(
+                  onPressed: () {},
+                  child: Text(
+                    "400Hz",
+                    style: TextStyle(color: Colors.white54),
+                  ),
+                )),
+            //Left Handed mode
+            scrollTile(
+                leading: Text("Left Handed Mode",
+                    style: TextStyle(
+                      fontSize: 25,
+                    )),
+                trailing: Switch(
+                  onChanged: (value) {
+                    setState(() {
+                      _toggledvalue2 = value;
+                    });
+                  },
+                  value: _toggledvalue2,
+                )),
+            //Proaccuracy
+            scrollTile(
+                leading: Text("Pro Accuracy",
+                    style: TextStyle(
+                      fontSize: 25,
+                    )),
+                trailing: Switch(
+                  onChanged: (value) {
+                    setState(() {
+                      _toggledvalue = value;
+                    });
+                  },
+                  value: _toggledvalue,
+                )),
 
-            Container(
-              margin: EdgeInsets.only(top: 5, bottom: 5),
-              padding:
-                  EdgeInsetsDirectional.symmetric(vertical: 2, horizontal: 8),
-              height: 60,
-              alignment: Alignment.center,
-              width: 600,
-              decoration: BoxDecoration(
-                  border: Border.all(color: Colors.white),
-                  borderRadius: BorderRadius.circular(30)),
-            ),
-
-            Container(
-              margin: EdgeInsets.only(top: 5, bottom: 5),
-              padding:
-                  EdgeInsetsDirectional.symmetric(vertical: 2, horizontal: 8),
-              height: 60,
-              alignment: Alignment.center,
-              width: 600,
-              decoration: BoxDecoration(
-                  border: Border.all(color: Colors.white),
-                  borderRadius: BorderRadius.circular(30)),
-            ),
-            Container(
-              margin: EdgeInsets.only(top: 5, bottom: 5),
-              padding:
-                  EdgeInsetsDirectional.symmetric(vertical: 2, horizontal: 8),
-              height: 60,
-              alignment: Alignment.center,
-              width: 600,
-              decoration: BoxDecoration(
-                  border: Border.all(color: Colors.white),
-                  borderRadius: BorderRadius.circular(30)),
-            ),
-
-            Container(
-              margin: EdgeInsets.only(top: 5, bottom: 5),
-              padding:
-                  EdgeInsetsDirectional.symmetric(vertical: 2, horizontal: 8),
-              height: 60,
-              alignment: Alignment.center,
-              width: 600,
-              decoration: BoxDecoration(
-                  border: Border.all(color: Colors.white),
-                  borderRadius: BorderRadius.circular(30)),
-            ),
-
-            Container(
-              margin: EdgeInsets.only(top: 5, bottom: 5),
-              padding:
-                  EdgeInsetsDirectional.symmetric(vertical: 2, horizontal: 8),
-              height: 60,
-              alignment: Alignment.center,
-              width: 600,
-              decoration: BoxDecoration(
-                  border: Border.all(color: Colors.white),
-                  borderRadius: BorderRadius.circular(30)),
-            ),
-
-            SizedBox(
+            const SizedBox(
               height: 19,
             ),
 
+            //Chords
             Row(
               children: [
                 Container(
@@ -161,32 +151,24 @@ class _SettingsPageState extends State<SettingsPage> {
                 )
               ],
             ),
-            SizedBox(
+
+            //FingerColor
+            scrollTile(
+                leading: const Text("Finger Color",
+                    style: TextStyle(
+                      fontSize: 25,
+                    )),
+                trailing: Switch(
+                  onChanged: (value) {
+                    setState(() {
+                      _fingerColor = value;
+                    });
+                  },
+                  value: _fingerColor,
+                )),
+
+            const SizedBox(
               height: 20,
-            ),
-
-            Container(
-              margin: EdgeInsets.only(top: 5, bottom: 5),
-              padding:
-                  EdgeInsetsDirectional.symmetric(vertical: 2, horizontal: 8),
-              height: 60,
-              alignment: Alignment.center,
-              width: 600,
-              decoration: BoxDecoration(
-                  border: Border.all(color: Colors.white),
-                  borderRadius: BorderRadius.circular(30)),
-            ),
-
-            Container(
-              margin: EdgeInsets.only(top: 5, bottom: 5),
-              padding:
-                  EdgeInsetsDirectional.symmetric(vertical: 2, horizontal: 8),
-              height: 60,
-              alignment: Alignment.center,
-              width: 600,
-              decoration: BoxDecoration(
-                  border: Border.all(color: Colors.white),
-                  borderRadius: BorderRadius.circular(30)),
             ),
 
             //Subscription
@@ -201,93 +183,124 @@ class _SettingsPageState extends State<SettingsPage> {
                   padding: EdgeInsets.only(left: 18),
                   width: 200,
                   alignment: Alignment.centerLeft,
-                  child: Text(
-                    "Subscription",
-                    style: TextStyle(
-                        //ß          color: Colors.white,
-                        fontSize: 30),
-                  ),
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       //border: Border.all(color: Colors.white)
                       ),
+                  child: const Text(
+                    "Privacy",
+                    style: TextStyle(
+                        //ß          color: Colors.white,
+                        fontSize: 20),
+                  ),
                 ),
-                SizedBox(
-                  width: 200,
-                )
               ],
             ),
             SizedBox(
               height: 20,
             ),
 
-            Container(
-              margin: EdgeInsets.only(top: 5, bottom: 5),
-              padding:
-                  EdgeInsetsDirectional.symmetric(vertical: 2, horizontal: 8),
-              height: 60,
-              alignment: Alignment.center,
-              width: 600,
-              decoration: BoxDecoration(
-                  border: Border.all(color: Colors.white),
-                  borderRadius: BorderRadius.circular(30)),
+            scrollTile(
+              leading: const Text(
+                "Privacy Notice",
+                style: TextStyle(fontSize: 25, color: Colors.white),
+              ),
+              trailing: TextButton(
+                onPressed: () {},
+                child: TextButton(
+                    onPressed: () {},
+                    child: const Icon(
+                      Icons.link_outlined,
+                      color: Colors.white54,
+                    )),
+              ),
             ),
 
-            Container(
-              margin: EdgeInsets.only(top: 5, bottom: 5),
-              padding:
-                  EdgeInsetsDirectional.symmetric(vertical: 2, horizontal: 8),
-              height: 60,
-              alignment: Alignment.center,
-              width: 600,
-              decoration: BoxDecoration(
-                  border: Border.all(color: Colors.white),
-                  borderRadius: BorderRadius.circular(30)),
+            scrollTile(
+              leading: const Text(
+                "Download Your Data",
+                style: TextStyle(fontSize: 25, color: Colors.white),
+              ),
+              trailing: TextButton(
+                onPressed: () {},
+                child: TextButton(
+                    onPressed: () {},
+                    child: const Icon(
+                      Icons.link_outlined,
+                      color: Colors.white54,
+                    )),
+              ),
             ),
 
-            Container(
-              margin: EdgeInsets.only(top: 5, bottom: 5),
-              padding:
-                  EdgeInsetsDirectional.symmetric(vertical: 2, horizontal: 8),
-              height: 60,
-              alignment: Alignment.center,
-              width: 600,
-              decoration: BoxDecoration(
-                  border: Border.all(color: Colors.white),
-                  borderRadius: BorderRadius.circular(30)),
+            scrollTile(
+              leading: const Text(
+                "Delete Your data",
+                style: TextStyle(fontSize: 25, color: Colors.white),
+              ),
+              trailing: TextButton(
+                onPressed: () {},
+                child: TextButton(
+                    onPressed: () {},
+                    child: const Icon(
+                      Icons.link_outlined,
+                      color: Colors.white54,
+                    )),
+              ),
             ),
-
-            Container(
-              margin: EdgeInsets.only(top: 5, bottom: 5),
-              padding:
-                  EdgeInsetsDirectional.symmetric(vertical: 2, horizontal: 8),
-              height: 60,
-              alignment: Alignment.center,
-              width: 600,
-              decoration: BoxDecoration(
-                  border: Border.all(color: Colors.white),
-                  borderRadius: BorderRadius.circular(30)),
+            scrollTile(
+              leading: const Text(
+                "Terms of Service",
+                style: TextStyle(fontSize: 25, color: Colors.white),
+              ),
+              trailing: TextButton(
+                onPressed: () {},
+                child: TextButton(
+                    onPressed: () {},
+                    child: const Icon(
+                      Icons.link_outlined,
+                      color: Colors.white54,
+                    )),
+              ),
             ),
-
-            Container(
-              margin: EdgeInsets.only(top: 5, bottom: 5),
-              padding:
-                  EdgeInsetsDirectional.symmetric(vertical: 2, horizontal: 8),
-              height: 60,
-              alignment: Alignment.center,
-              width: 600,
-              decoration: BoxDecoration(
-                  border: Border.all(color: Colors.white),
-                  borderRadius: BorderRadius.circular(30)),
-            ),
-
-            /*   SwitchListTile(value: toggled,
-             onChanged: (bool value){
-              setState(()=>toggled = value);
-             },title: Text("Recieve Notification",style: TextStyle(fontSize: 25),),activeColor: Colors.green.shade400
-            ,) */
           ],
         ),
       ),
     );
+  }
+}
+
+class scrollTile extends StatelessWidget {
+  Widget leading;
+  Widget trailing;
+
+  scrollTile({
+    super.key,
+    required this.leading,
+    required this.trailing,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        margin: const EdgeInsets.only(top: 5, bottom: 5, left: 5, right: 5),
+        padding:
+            const EdgeInsetsDirectional.symmetric(vertical: 2, horizontal: 8),
+        height: 60,
+        alignment: Alignment.center,
+        width: 600,
+        decoration: BoxDecoration(
+            border: Border.all(color: Colors.white),
+            borderRadius: BorderRadius.circular(25)),
+        child: ListTile(
+          leading: leading,
+          // leading: Text(
+          //   text,
+          //   textAlign: TextAlign.left,
+          //   style: const TextStyle(
+          //     color: Colors.white,
+          //     fontSize: 25,
+          //   ),
+          // ),
+          trailing: trailing,
+        ));
   }
 }
